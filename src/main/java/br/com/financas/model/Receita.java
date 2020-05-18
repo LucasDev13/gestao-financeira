@@ -1,13 +1,33 @@
 package br.com.financas.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
-public class Receita {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Table(name = "tb_receita")
+public class Receita implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codReceita;
 	private double valor;
 	private String descricao;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@Column(name = "data_cadastro", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntrada;
+	private LocalTime horaCadastro;
 
 	public Long getCodReceita() {
 		return codReceita;
@@ -39,6 +59,14 @@ public class Receita {
 
 	public void setDataEntrada(LocalDate dataEntrada) {
 		this.dataEntrada = dataEntrada;
+	}
+	
+	public LocalTime getHoraCadastro() {
+		return horaCadastro;
+	}
+	
+	public void setHoraCadastro(LocalTime horaCadastro) {
+		this.horaCadastro = horaCadastro;
 	}
 
 	@Override

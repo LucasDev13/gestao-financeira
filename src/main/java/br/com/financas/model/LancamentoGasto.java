@@ -1,14 +1,30 @@
 package br.com.financas.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import br.com.financas.model.Item;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class LancamentoGasto {
+import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+@Table(name = "tb_lancamento-gasto")
+public class LancamentoGasto implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codLancamentoGasto;
 	private double valorGasto;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@Column(name = "data_cadastro", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataGasto;
 	private LocalTime horaGasto;
 	private int qtdGasto;// quantidade de itens

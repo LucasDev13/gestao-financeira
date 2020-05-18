@@ -1,13 +1,31 @@
 package br.com.financas.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Conta {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Table(name = "tb_conta")
+public class Conta implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codConta;
 	private double limiteSaldo;
 	private double saldo;
 	private Pessoa titular;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@Column(name = "data_cadastro", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataEntradaValor;
 	private Receita receita;
 
