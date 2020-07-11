@@ -1,4 +1,4 @@
-package br.com.financas.model;
+package br.com.financas.gestaofinanceira.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "tb_lancamento-gasto")
+@Table(name = "tb_lancamento_gasto")
 public class LancamentoGasto implements Serializable{
 
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package br.com.financas.model;
+package br.com.financas.gestaofinanceira.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,51 +14,51 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "tb_receita")
-public class Receita implements Serializable{
+@Table(name = "tb_pessoa")
+public class Pessoa implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long codReceita;
-	private double valor;
-	private String descricao;
+	@GeneratedValue (strategy = GenerationType.AUTO)
+	private Long codPessoa;
+	private String nomeCompleto;
+	private int cpf;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name = "data_cadastro", nullable = false, columnDefinition = "DATE")
-	private LocalDate dataEntrada;
+	private LocalDate dataCadastro;
 	private LocalTime horaCadastro;
 
-	public Long getCodReceita() {
-		return codReceita;
+	public Long getCodPessoa() {
+		return codPessoa;
 	}
 
-	public void setCodReceita(Long codReceita) {
-		this.codReceita = codReceita;
+	public void setCodPessoa(Long codPessoa) {
+		this.codPessoa = codPessoa;
 	}
 
-	public double getValor() {
-		return valor;
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public int getCpf() {
+		return cpf;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
 	}
 
-	public LocalDate getDataEntrada() {
-		return dataEntrada;
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setDataEntrada(LocalDate dataEntrada) {
-		this.dataEntrada = dataEntrada;
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 	
 	public LocalTime getHoraCadastro() {
@@ -73,7 +73,7 @@ public class Receita implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codReceita == null) ? 0 : codReceita.hashCode());
+		result = prime * result + ((codPessoa == null) ? 0 : codPessoa.hashCode());
 		return result;
 	}
 
@@ -85,11 +85,11 @@ public class Receita implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Receita other = (Receita) obj;
-		if (codReceita == null) {
-			if (other.codReceita != null)
+		Pessoa other = (Pessoa) obj;
+		if (codPessoa == null) {
+			if (other.codPessoa != null)
 				return false;
-		} else if (!codReceita.equals(other.codReceita))
+		} else if (!codPessoa.equals(other.codPessoa))
 			return false;
 		return true;
 	}

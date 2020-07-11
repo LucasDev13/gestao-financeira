@@ -1,4 +1,4 @@
-package br.com.financas.model;
+package br.com.financas.gestaofinanceira.model;
 
 import java.io.Serializable;
 
@@ -17,7 +17,8 @@ public class Empresa implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codEmpresa;
-	private String nomeEmpresa;
+	private String nomeEmpresa;//nome do lugar que foi realizado a compra, que será adicionado a partir do cupom fiscal.
+	private int cnpj;
 
 	public Long getCodEmpresa() {
 		return codEmpresa;
@@ -33,6 +34,14 @@ public class Empresa implements Serializable{
 
 	public void setNomeEmpresa(String nomeEmpresa) {
 		this.nomeEmpresa = nomeEmpresa;
+	}
+	
+	public int getCnpj() {
+		return cnpj;
+	}
+	
+	public void setCnpj(int cnpj) {
+		this.cnpj = cnpj;
 	}
 
 	@Override

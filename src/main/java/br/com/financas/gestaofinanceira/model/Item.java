@@ -1,4 +1,4 @@
-package br.com.financas.model;
+package br.com.financas.gestaofinanceira.model;
 
 import java.io.Serializable;
 
